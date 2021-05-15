@@ -1,0 +1,20 @@
+declare module '@zhigamovsky/styled-console-log' {
+  function render(...str: any[]): void
+  function zelda(...str: any[]): void
+  function ruddy(...str: any[]): void
+  function error(...str: any[]): void
+  function hazel(...str: any[]): void
+  function check(...str: any[]): void
+  function event(...str: any[]): void
+  function merge(...str: any[]): void
+  function info(...str: any[]): void
+  function rozy(...str: any[]): void
+  function $1(...str: any[]): void
+  function $2(...str: any[]): void
+  function $3(...str: any[]): void
+  function $4(...str: any[]): void
+  function $5(...str: any[]): void
+  function $6(...str: any[]): void
+  function $7(...str: any[]): void
+  function $8(...str: any[]): void
+}
