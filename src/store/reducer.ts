@@ -1,3 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit'
+import { timerReducer } from './timer'
 
-export default combineReducers({})
+export default combineReducers({
+  timer: timerReducer,
+})
