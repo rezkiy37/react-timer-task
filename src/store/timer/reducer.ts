@@ -1,9 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit'
 import {
+  clearActiveTaskAction,
   addTaskToListAction,
   setActiveTaskAction,
   renameTaskAction,
-  stopTaskAction,
 } from './actions'
 import { TInitialState } from './types'
 
@@ -33,7 +33,7 @@ export const timerReducer = createReducer<TInitialState>(
       list: [...state.list, payload],
     }))
 
-    builder.addCase(stopTaskAction, state => ({
+    builder.addCase(clearActiveTaskAction, state => ({
       ...state,
       activeTask: null,
     }))
