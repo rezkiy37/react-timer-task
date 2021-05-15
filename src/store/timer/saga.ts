@@ -1,13 +1,50 @@
-import { takeLatest } from 'redux-saga/effects'
-import { startTaskAction, stopTaskAction } from './actions'
+import { put, select, takeLatest } from 'redux-saga/effects'
+import {
+  addTaskToListAction,
+  clearActiveTaskAction,
+  setActiveTaskAction,
+  startTaskAction,
+  stopTaskAction,
+} from './actions'
+import { getTimerSelector } from './selectors'
 import { Log } from '../../utils'
 
 function* startTaskWorker() {
-  yield Log.info('startTaskWorker')
+  Log.info('startTaskWorker')
+
+  const { list }: ReturnType<typeof getTimerSelector> = yield select(
+    getTimerSelector,
+  )
+
+  yield put(
+    setActiveTaskAction({
+      id: list.length + 1,
+      startDate: Date.now(),
+      title: '',
+    }),
+  )
 }
 
 function* stopTaskWorker() {
-  yield Log.info('stopTaskWorker')
+  Log.info('stopTaskWorker')
+
+  const { activeTask }: ReturnType<typeof getTimerSelector> = yield select(
+    getTimerSelector,
+  )
+
+  if (activeTask) {
+    const endDate = Date.now()
+
+    yield put(
+      addTaskToListAction({
+        ...activeTask,
+        duration: endDate - activeTask.startDate,
+        endDate,
+      }),
+    )
+
+    yield put(clearActiveTaskAction())
+  } else Log.ruddy('There is not activeTask')
 }
 
 export function* timerWatcher() {

@@ -5,6 +5,7 @@ import {
   TAddTaskToListActionPayload,
 } from './types'
 
+const CLEAR_ACTIVE_TASK_ACTION = 'TIMER/CLEAR_ACTIVE_TASK_ACTION'
 const ADD_TASK_TO_LIST_ACTION = 'TIMER/ADD_TASK_TO_LIST_ACTION'
 const SET_ACTIVE_TASK_ACTION = 'TIMER/SET_ACTIVE_TASK_ACTION'
 const RENAME_TASK_ACTION = 'TIMER/RENAME_TASK_ACTION'
@@ -31,3 +32,8 @@ export const startTaskAction =
 
 export const stopTaskAction =
   createAction<void, typeof STOP_TASK_ACTION>(STOP_TASK_ACTION)
+
+export const clearActiveTaskAction = createAction<
+  void,
+  typeof CLEAR_ACTIVE_TASK_ACTION
+>(CLEAR_ACTIVE_TASK_ACTION)
