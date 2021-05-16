@@ -1,7 +1,8 @@
 import React, { FC } from 'react'
+import { Timer } from '../../components'
 
 const Main: FC = () => {
-  return <></>
+  return <Timer />
 }
 
 export default Main
