@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { useDispatch } from 'react-redux'
 import TableContainer from '@material-ui/core/TableContainer'
 import MaterialTable from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -7,12 +8,14 @@ import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import Button from '@material-ui/core/Button'
 import { TOnClickDelete, TOnClickInfo } from './types'
+import { removeTaskAction } from '../../store'
 import { useTypedSelector } from '../../hooks'
 import { formatTime } from '../../helpers'
 import { formatDate } from './helpers'
 import { Log } from '../../utils'
 
 const Table: FC = () => {
+  const dispatch = useDispatch()
   const { list } = useTypedSelector(state => state.timer)
 
   const onClickInfo: TOnClickInfo = id => {
@@ -24,7 +27,7 @@ const Table: FC = () => {
   const onClickDelete: TOnClickDelete = id => {
     Log.event('Table.onClickDelete() => id', id)
 
-    // TODO implement dispatch here
+    dispatch(removeTaskAction(id))
   }
 
   return (
