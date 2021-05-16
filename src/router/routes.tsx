@@ -8,6 +8,11 @@ export const RoutesTree: TRoutesTree = {
     path: '/',
     component: MainPage,
   },
+  chart: {
+    name: 'chart',
+    path: '/chart',
+    component: MainPage,
+  },
   task: {
     name: 'task',
     path: '/task/:id',

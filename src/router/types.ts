@@ -14,3 +14,4 @@ export type TRoute<N> = {
 export type TRouteNames =
   | 'main'
   | 'task'
+  | 'chart'
