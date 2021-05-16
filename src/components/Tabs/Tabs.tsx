@@ -36,7 +36,7 @@ const Tabs: FC = () => {
         </MaterialTabs>
       </AppBar>
 
-      {StaticTabs[value].component()}
+      {StaticTabs[value]?.component()}
     </>
   )
 }
