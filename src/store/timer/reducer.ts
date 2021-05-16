@@ -4,6 +4,7 @@ import {
   addTaskToListAction,
   setActiveTaskAction,
   renameTaskAction,
+  removeTaskAction,
 } from './actions'
 import { TInitialState } from './types'
 
@@ -36,6 +37,11 @@ export const timerReducer = createReducer<TInitialState>(
     builder.addCase(clearActiveTaskAction, state => ({
       ...state,
       activeTask: null,
+    }))
+
+    builder.addCase(removeTaskAction, (state, { payload }) => ({
+      ...state,
+      list: state.list.filter(({ id }) => id !== payload),
     }))
   },
 )

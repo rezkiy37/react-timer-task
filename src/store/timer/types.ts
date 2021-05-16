@@ -11,3 +11,5 @@ export type TRenameActiveTaskActionPayload = Entities.Task['title']
 export type TSetActiveTaskActionPayload = Entities.Task
 
 export type TAddTaskToListActionPayload = Entities.Task
+
+export type TRemoveTaskToListActionPayload = Entities.Task['id']
