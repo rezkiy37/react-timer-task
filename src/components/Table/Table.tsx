@@ -1,5 +1,7 @@
 import React, { FC } from 'react'
+import { generatePath } from 'react-router'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import TableContainer from '@material-ui/core/TableContainer'
 import MaterialTable from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -8,20 +10,21 @@ import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import Button from '@material-ui/core/Button'
 import { TOnClickDelete, TOnClickInfo } from './types'
+import { formatTime, formatDate } from '../../helpers'
 import { removeTaskAction } from '../../store'
 import { useTypedSelector } from '../../hooks'
-import { formatTime } from '../../helpers'
-import { formatDate } from './helpers'
+import { RoutesTree } from '../../router'
 import { Log } from '../../utils'
 
 const Table: FC = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const { list } = useTypedSelector(state => state.timer)
 
   const onClickInfo: TOnClickInfo = id => {
     Log.event('Table.onClickInfo() => id', id)
 
-    // TODO implement history.push here
+    history.push(generatePath(RoutesTree.task.path, { id }))
   }
 
   const onClickDelete: TOnClickDelete = id => {
