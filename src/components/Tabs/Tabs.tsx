@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { createElement, FC, useEffect, useState } from 'react'
 import MaterialTabs from '@material-ui/core/Tabs'
 import AppBar from '@material-ui/core/AppBar'
 import Tab from '@material-ui/core/Tab'
@@ -36,7 +36,7 @@ const Tabs: FC = () => {
         </MaterialTabs>
       </AppBar>
 
-      {StaticTabs[value]?.component()}
+      {createElement(StaticTabs[value]?.component)}
     </>
   )
 }
