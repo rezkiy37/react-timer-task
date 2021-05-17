@@ -16,13 +16,19 @@ function* startTaskWorker() {
     getTimerSelector,
   )
 
+  /* eslint-disable prefer-spread */
   yield put(
     setActiveTaskAction({
-      id: list.length + 1,
+      id:
+        Math.max.apply(
+          Math,
+          list.map(({ id }) => id),
+        ) + 1,
       startDate: Date.now(),
       title: '',
     }),
   )
+  /* eslint-enable prefer-spread */
 }
 
 function* stopTaskWorker() {
