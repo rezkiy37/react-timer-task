@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, ReactElement } from "react"
+import { ChangeEvent, FC } from 'react'
 
 export type TTabs = Array<TTab<TTabsTypes>>
 
@@ -6,7 +6,7 @@ export type TTab<N> = {
   name: N
   path: string
   label: string
-  component: () => ReactElement
+  component: FC
 }
 
 export type TOnChangeTab = (event: ChangeEvent<{}>, value: any) => void
